@@ -1,0 +1,263 @@
+<html>
+
+	<style>
+
+		body{
+			background-color: lightsteelblue;
+			margin: auto;
+		}
+		#top_div{
+			background-color: lightslategray;
+			text-align: center;
+			font-size: 100px;
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
+
+		#instructions_div{
+			text-align: center;
+			font-size: 30px;
+			padding-top: 20px;
+		}
+
+		#winner_div{
+			text-align: center;
+			font-size: 60px;
+			padding-top: 20px;
+		}
+
+		#game_table{
+			margin-top: 50px;
+			border-spacing: 10px;
+			border-radius: 10px;
+		}
+
+
+		button{
+			margin-top: 20px;
+			font-size: 20px;
+		}
+
+		#reset{
+			text-align: center;
+			padding-top: 20px;
+			font-size: 20px;
+		}
+
+
+	</style>
+
+
+
+	<script>
+		
+		let cards = [];
+		let cards_list = ["0", "1", "2", "3"];
+		let flipped_cards = [];
+
+		function PrepareCards()
+		{
+
+
+			while (cards.length < 4)
+			{
+				var a = Math.floor(Math.random() * 4) + 1 + ".png";
+
+				var notIn = true;
+				cards.forEach(element => {
+					if (a == element)
+					{
+						notIn = false;
+					}
+				});
+				
+				if (notIn)
+				{
+					cards.push(a);
+				}
+			}
+
+			console.log(cards);
+
+
+			console.log("Cards prepared");
+		}
+		
+
+		function FlipCard(spot)
+		{	
+			console.log(cards_list);
+			
+			
+			
+			var card = "card" + spot;
+			card_img = document.getElementById(card);
+
+
+			notflipped = true
+
+			flipped_cards.forEach(element => {
+				if (spot == element)
+				{
+					notflipped = false;
+				}
+			});
+			
+
+			if (notflipped && flipped_cards.length < 2 && cards_list.includes(spot))
+			{
+				flipped_cards.push(spot);
+				
+				card_img.src = cards[spot];
+
+				if (flipped_cards.length >= 2)
+				{
+					CheckForMatch()
+				}
+
+			}
+
+			
+			
+
+
+		}
+
+		
+
+		function CheckForMatch()
+		{
+
+
+			setTimeout(function(){
+
+				if (cards[flipped_cards[0]] == "1.png" && cards[flipped_cards[1]] == "2.png" || cards[flipped_cards[0]] == "2.png" && cards[flipped_cards[1]] == "1.png" ||
+					cards[flipped_cards[0]] == "3.png" && cards[flipped_cards[1]] == "4.png" || cards[flipped_cards[0]] == "4.png" && cards[flipped_cards[1]] == "3.png")
+				{  // CARDS MATCH
+					console.log("Cards match")
+					
+					flipped_cards.forEach(element => {
+						var card = "card" + element;
+						card_img = document.getElementById(card);
+						card_img.src = "5.png";
+					});
+
+
+					Remove(flipped_cards[0])
+					Remove(flipped_cards[1])
+
+					flipped_cards = [];
+
+
+
+					if (cards_list.length <= 0)
+					{
+						Winner();
+					}
+
+
+				}
+				else
+				{  // NO MATCH
+					console.log("Cards don't match")
+
+					flipped_cards.forEach(element => {
+						var card = "card" + element;
+						card_img = document.getElementById(card);
+						card_img.src = "0.png";
+					});
+
+					flipped_cards = [];
+				}
+			}, 1000);
+
+
+		}
+
+
+
+		function FlipAllCards() //For Hint
+		{
+			
+			cards_list.forEach(element => {
+					
+				var card = "card" + element;
+				card_img = document.getElementById(card);
+				card_img.src = cards[element];
+			});
+
+			setTimeout(function(){
+				cards_list.forEach(element => {
+
+					var card = "card" + element;
+					card_img = document.getElementById(card);
+					card_img.src = "0.png";
+
+				});
+			}, 1000);
+		}
+
+
+
+
+		function Remove(element) //Element = 0,1,2,3
+		{
+			//cards_list.Remove(flipped_cards[0])
+
+			var index = cards_list.indexOf(element);
+
+			if (index > -1) {
+				cards_list.splice(index, 1);
+			}
+
+
+		}
+
+
+		function Winner()
+		{
+			console.log("YOU WIN!!!")
+
+			document.getElementById("winner_div").style.display = "block";
+			document.getElementById("game_table").style.display = "none";
+			document.getElementById("hint").style.display = "none";
+
+
+		}
+
+	</script>
+
+
+
+
+	<body onload="PrepareCards()">
+
+		<div id="top_div"> Memory Game! </div>
+		<div id="instructions_div"> Match cards together to win </div>
+
+		<div id="winner_div"  style = "display:none"> YOU WIN!</div>
+
+		<center>
+			<table border=3 id="game_table">
+
+				<tr>
+					<td><img src="0.png" id="card0" onclick="FlipCard('0');"> </td>
+					<td><img src="0.png" id="card1" onclick="FlipCard('1');"> </td>
+				</tr>
+
+				<tr>
+					<td><img src="0.png" id="card2" onclick="FlipCard('2');"> </td>
+					<td><img src="0.png" id="card3" onclick="FlipCard('3');"> </td>
+				</tr>
+
+			</table>
+		</center>
+
+		<center>
+			<button onclick="FlipAllCards()" id="hint"> Need a hint? </button>
+		</center>
+
+		<a href="javascript:location.reload()" id="reset" style="display: block;">Restart Game</a>
+
+	</body>
+</html>
