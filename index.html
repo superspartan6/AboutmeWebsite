@@ -1,268 +1,196 @@
+<!DOCTYPE html>
+
 <html>
-	<head>
-
-		<meta http-equiv="Refresh" content="0; url='https://youtu.be/vMr-771iRVU'" />
-		
-	</head>
-	
-	<style>
-
-		body{
-			background-color: lightsteelblue;
-			margin: auto;
-		}
-		#top_div{
-			background-color: lightslategray;
-			text-align: center;
-			font-size: 100px;
-			padding-top: 10px;
-			padding-bottom: 10px;
-		}
-
-		#instructions_div{
-			text-align: center;
-			font-size: 30px;
-			padding-top: 20px;
-		}
-
-		#winner_div{
-			text-align: center;
-			font-size: 60px;
-			padding-top: 20px;
-		}
-
-		#game_table{
-			margin-top: 50px;
-			border-spacing: 10px;
-			border-radius: 10px;
-		}
 
 
-		button{
-			margin-top: 20px;
-			font-size: 20px;
-		}
-
-		#reset{
-			text-align: center;
-			padding-top: 20px;
-			font-size: 20px;
-		}
-
-
-	</style>
+<head>
 
-
+    <title> About Caleb Zierenberg </title>
 
-	<script>
-		
-		let cards = [];
-		let cards_list = ["0", "1", "2", "3"];
-		let flipped_cards = [];
+    <h1> Caleb Zierenberg </h1>
 
-		function PrepareCards()
-		{
+</head>
 
 
-			while (cards.length < 4)
-			{
-				var a = Math.floor(Math.random() * 4) + 1 + ".png";
 
-				var notIn = true;
-				cards.forEach(element => {
-					if (a == element)
-					{
-						notIn = false;
-					}
-				});
-				
-				if (notIn)
-				{
-					cards.push(a);
-				}
-			}
+<body style="font-family: Arial, Helvetica, sans-serif;">
 
-			console.log(cards);
 
 
-			console.log("Cards prepared");
-		}
-		
 
-		function FlipCard(spot)
-		{	
-			console.log(cards_list);
-			
-			
-			
-			var card = "card" + spot;
-			card_img = document.getElementById(card);
 
 
-			notflipped = true
 
-			flipped_cards.forEach(element => {
-				if (spot == element)
-				{
-					notflipped = false;
-				}
-			});
-			
 
-			if (notflipped && flipped_cards.length < 2 && cards_list.includes(spot))
-			{
-				flipped_cards.push(spot);
-				
-				card_img.src = cards[spot];
 
-				if (flipped_cards.length >= 2)
-				{
-					CheckForMatch()
-				}
 
-			}
+<img alt="It is me" src="IMG_7267.JPG" width="500" height="500">
 
-			
-			
 
 
-		}
+<h2> Personal Info: </h2>
 
-		
+<ul>
+    <li><b>Major:</b> Software Development</li>
+    <li><b>School:</b> Royal High, Simi Vally, California, 2021</li>
+    <li><b>Current year at UVU:</b> Junior</li>
+    <li><b>Favorite Ice Cream:</b> Chocolate Malted Crunch</li>
+</ul>
 
-		function CheckForMatch()
-		{
 
 
-			setTimeout(function(){
+<h2> My five favorite books:</h2>
 
-				if (cards[flipped_cards[0]] == "1.png" && cards[flipped_cards[1]] == "2.png" || cards[flipped_cards[0]] == "2.png" && cards[flipped_cards[1]] == "1.png" ||
-					cards[flipped_cards[0]] == "3.png" && cards[flipped_cards[1]] == "4.png" || cards[flipped_cards[0]] == "4.png" && cards[flipped_cards[1]] == "3.png")
-				{  // CARDS MATCH
-					console.log("Cards match")
-					
-					flipped_cards.forEach(element => {
-						var card = "card" + element;
-						card_img = document.getElementById(card);
-						card_img.src = "5.png";
-					});
+<ol>
+    <li> Eragon, <a href="https://www.paolini.net/">Christopher Paolini </a></li>
+    <li> Harry Potter, <a href="https://www.jkrowling.com/">JK Rowling </a> </li>
+    <li> Five Kingdoms, <a href="https://brandonmull.com/">Brandon Mull </a></li>
+    <li> The Hobbit, <a href="https://en.wikipedia.org/wiki/J._R._R._Tolkien">John Ronald Reuel Tolkien </a> </li>
+    <li> The Time Machine, <a href="https://en.wikipedia.org/wiki/H._G._Wells">H.G. Wells </a> </li>
+</ol>
 
 
-					Remove(flipped_cards[0])
-					Remove(flipped_cards[1])
+<center>
+<h2> My Haiku: Gratitude </h2>
 
-					flipped_cards = [];
+A poem I wrote when trying to be more grateful
 
+<p>White is like the clouds, blue is like the sky,<br>
+Green is like the grass so green it makes me want to cry.<br>
+When I shed a tear its not of sadness hear,<br>
+but of the Thanksgiving spirit, I always try to hear it.</p>
+</center>
 
 
-					if (cards_list.length <= 0)
-					{
-						Winner();
-					}
+<h2> Caleb's interesting interests: </h2>
 
+<p> I was born and raised in California.
+    I am the 5th of 8th kids.
+    I moved to Utah 3 years ago.
+</p>
+
+<p> I love programming.
+    I first started programming when I was 12.
+    I first learned to program with a graphing calculator.
+</p>
+
+<p> My girlfriend's name is Ava.
+    She is very pretty.
+    We have been dating for 1 year now.
+</p>
+
+
+<h2> Class Schedule: </h2>
+
+
+
+<!-- SPACING AND PADDING TO 3-->
+<table border="1">
+
+    <tr>
+        <td style="background-color:grey;"> </td>
+        <td style="background-color:pink;">Monday</td>
+        <td style="background-color:pink;">Tuesday</td>
+        <td style="background-color:pink;">Wednesday</td>
+        <td style="background-color:pink;">Thursday</td>
+        <td style="background-color:pink;">Friday</td>
+    </tr>
+    <tr>
+        <td style="background-color:red;"> 7:00</td>
+        <td style="background-color: aqua;" rowspan="18">Work</td>
+        <td style="background-color: aqua;" rowspan="18">Work</td>
+        <td style="background-color: aqua;" rowspan="18">Work</td>
+        <td style="background-color: aqua;" rowspan="18">Work</td>
+        <td style="background-color: aqua;" rowspan="18">Work</td>
+    </tr>
+    <tr>
+        <td style="background-color:red;"> 7:30</td>
+    </tr>
+    <tr>
+        <td style="background-color:red;"> 8:00</td>
+    </tr>
+    <tr>
+        <td style="background-color:red;"> 8:30</td>
+    </tr>
+    <tr>
+        <td style="background-color:red;"> 9:00</td>
+    </tr>
+    <tr>
+        <td style="background-color:red;"> 9:30</td>
+    </tr>
+    <tr>
+        <td style="background-color:red;"> 10:00</td>
+    </tr>
+    <tr>
+        <td style="background-color:red;"> 10:30</td>
+    </tr>
+    <tr>
+        <td style="background-color:red;"> 11:00</td>
+    </tr>
+        <td style="background-color:red;"> 11:30</td>
+    </tr>
+    <tr>
+        <td style="background-color:red;"> 12:00</td>
+    </tr>
+    <tr>
+        <td style="background-color:red;"> 12:30</td>
+    </tr>
+    <tr>
+        <td style="background-color:red;"> 1:00</td>
+    </tr>
+    <tr>
+        <td style="background-color:red;"> 1:30</td>
+    </tr>
+    <tr>
+        <td style="background-color:red;"> 2:00</td>
+    </tr>
+    <tr>
+        <td style="background-color:red;"> 2:30</td>
+    </tr>
+    <tr>
+        <td style="background-color:red;"> 3:00</td>
+    </tr>
+        <td style="background-color:red;"> 3:30</td>
+    </tr>
+    <tr>
+        <td style="background-color:red;"> 4:00</td>
+        <td style="background-color:blueviolet;" rowspan="3">Stats Class</td>
+        <td style="background-color:green;" rowspan="3">Ethics Class</td>
+        <td style="background-color:blueviolet;"rowspan="3">Stats Class</td>
+        <td style="background-color:green;" rowspan="3">Ethics Class</td>
+        <td style="background-color:yellow;" rowspan="3">Gym</td>
+    </tr>
+    <tr>
+        <td style="background-color:red;"> 4:30</td>
+    </tr>
+    <tr>
+        <td style="background-color:red;"> 5:00</td>
+    </tr>
+    <tr>
+        <td style="background-color:red;"> 5:30</td>
+        <td style="background-color:blue;"rowspan="3">Spanish Class</td>
+        <td style="background-color:orange;"rowspan="3">C++ Class</td>
+        <td style="background-color:blue;"rowspan="3">Spanish Class</td>
+        <td style="background-color:orange;"rowspan="3">C++ Class</td>
+        <td style="background-color:lightgreen;"rowspan="3">Date w/ girlfriend</td>
+    </tr>
+    <tr>
+        <td style="background-color:red;"> 6:00</td>
+    </tr>
+    <tr>
+        <td style="background-color:red;"> 6:30</td>
+    </tr>
+
+</table>
+
+
+
+
+</body>
 
-				}
-				else
-				{  // NO MATCH
-					console.log("Cards don't match")
-
-					flipped_cards.forEach(element => {
-						var card = "card" + element;
-						card_img = document.getElementById(card);
-						card_img.src = "0.png";
-					});
-
-					flipped_cards = [];
-				}
-			}, 1000);
-
-
-		}
-
-
-
-		function FlipAllCards() //For Hint
-		{
-			
-			cards_list.forEach(element => {
-					
-				var card = "card" + element;
-				card_img = document.getElementById(card);
-				card_img.src = cards[element];
-			});
-
-			setTimeout(function(){
-				cards_list.forEach(element => {
-
-					var card = "card" + element;
-					card_img = document.getElementById(card);
-					card_img.src = "0.png";
-
-				});
-			}, 1000);
-		}
-
-
-
-
-		function Remove(element) //Element = 0,1,2,3
-		{
-			//cards_list.Remove(flipped_cards[0])
-
-			var index = cards_list.indexOf(element);
-
-			if (index > -1) {
-				cards_list.splice(index, 1);
-			}
-
-
-		}
-
-
-		function Winner()
-		{
-			console.log("YOU WIN!!!")
-
-			document.getElementById("winner_div").style.display = "block";
-			document.getElementById("game_table").style.display = "none";
-			document.getElementById("hint").style.display = "none";
-
-
-		}
-
-	</script>
-
-
-
-
-	<body onload="PrepareCards()">
-
-		<div id="top_div"> Memory Game! </div>
-		<div id="instructions_div"> Match cards together to win </div>
-
-		<div id="winner_div"  style = "display:none"> YOU WIN!</div>
-
-		<center>
-			<table border=3 id="game_table">
-
-				<tr>
-					<td><img src="0.png" id="card0" onclick="FlipCard('0');"> </td>
-					<td><img src="0.png" id="card1" onclick="FlipCard('1');"> </td>
-				</tr>
-
-				<tr>
-					<td><img src="0.png" id="card2" onclick="FlipCard('2');"> </td>
-					<td><img src="0.png" id="card3" onclick="FlipCard('3');"> </td>
-				</tr>
-
-			</table>
-		</center>
-
-		<center>
-			<button onclick="FlipAllCards()" id="hint"> Need a hint? </button>
-		</center>
-
-		<a href="javascript:location.reload()" id="reset" style="display: block;">Restart Game</a>
-
-	</body>
 </html>
+
+
+
+
+
